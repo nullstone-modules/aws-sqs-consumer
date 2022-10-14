@@ -1,0 +1,16 @@
+org_name: nullstone
+name: aws-sqs-consumer
+friendly_name: Queue (SQS) Consumer
+description: Grants and configures application to consume messages from an SQS datastore.
+category: capability
+subcategory: datastores
+provider_types:
+    - aws
+platform: sqs
+subplatform: ""
+type: ""
+appCategories:
+    - container
+    - serverless
+    - server
+is_public: true
