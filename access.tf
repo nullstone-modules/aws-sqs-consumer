@@ -25,7 +25,7 @@ data "aws_iam_policy_document" "access" {
   }
 
   dynamic "statement" {
-    for_each = local.kms_key_id == "" ? [] : [local.kms_key_id]
+    for_each = local.kms_key_arn == "" ? [] : [local.kms_key_arn]
 
     content {
       effect    = "Allow"
