@@ -28,7 +28,7 @@ data "aws_iam_policy_document" "access" {
     for_each = local.kms_key_id == "" ? [] : [local.kms_key_id]
 
     content {
-      effect    = "AllowEncryptionKeyRead"
+      effect    = "Allow"
       resources = [statement.value]
       actions   = ["kms:Decrypt"]
     }
