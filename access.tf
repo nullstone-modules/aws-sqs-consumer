@@ -11,7 +11,7 @@ resource "aws_iam_policy" "access" {
 
 data "aws_iam_policy_document" "access" {
   statement {
-    effect    = "AllowQueueAccess"
+    effect    = "Allow"
     resources = [local.queue_arn]
 
     actions = [
