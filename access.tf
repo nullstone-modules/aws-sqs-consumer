@@ -29,7 +29,7 @@ data "aws_iam_policy_document" "access" {
 
     content {
       effect    = "AllowEncryptionKeyRead"
-      resources = statement.value
+      resources = [statement.value]
       actions   = ["kms:Decrypt"]
     }
   }
