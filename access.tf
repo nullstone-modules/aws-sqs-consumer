@@ -11,7 +11,7 @@ resource "aws_iam_policy" "access" {
 
 data "aws_iam_policy_document" "access" {
   statement {
-    effect    = "Allow"
+    effect    = "AllowQueueAccess"
     resources = [local.queue_arn]
 
     actions = [
@@ -22,5 +22,15 @@ data "aws_iam_policy_document" "access" {
       "sqs:ChangeMessageVisibilityBatch",
       "sqs:GetQueueUrl"
     ]
+  }
+
+  dynamic "statement" {
+    for_each = local.kms_key_id == "" ? [] : [local.kms_key_id]
+
+    content {
+      effect    = "AllowEncryptionKeyRead"
+      resources = [statement.value]
+      actions   = ["kms:Decrypt"]
+    }
   }
 }
